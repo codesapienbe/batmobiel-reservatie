@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,8 +26,9 @@ public class ReservationController {
     }
 
     @PostMapping
-    public ResponseEntity<ReservationResponse> create(@RequestBody @Valid ReservationCreateRequest request) {
-        var res = service.create(request);
+    public ResponseEntity<ReservationResponse> create(Principal principal, @RequestBody @Valid ReservationCreateRequest request) {
+        // annotate reservation with the authenticated principal username
+        var res = service.create(new io.github.codesapienbe.reservation.dto.ReservationCreateRequest(principal.getName(), request.start(), request.end()));
         return ResponseEntity.created(URI.create("/reservations/" + res.id())).body(res);
     }
 
