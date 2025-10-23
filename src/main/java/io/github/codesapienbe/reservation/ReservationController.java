@@ -39,6 +39,20 @@ public class ReservationController {
         return service.list(p);
     }
 
+    @GetMapping("/{id}/duration")
+    public ResponseEntity<Long> duration(@PathVariable UUID id) {
+        return service.durationInMinutes(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/search")
+    public List<ReservationResponse> search(@RequestParam String from, @RequestParam String to) {
+        var f = ZonedDateTime.parse(from);
+        var t = ZonedDateTime.parse(to);
+        return service.searchByRange(f, t);
+    }
+
     @GetMapping("/active")
     public List<ReservationResponse> active() {
         return service.active();

@@ -64,6 +64,19 @@ class ReservationServiceTest {
         assertThat(deleted.get().status()).isEqualTo(ReservationStatus.DELETED);
         verify(repo).save(r);
     }
+
+    @Test
+    void durationInMinutes_returnsCorrectValue() {
+        var id = UUID.randomUUID();
+        var start = ZonedDateTime.now();
+        var r = new Reservation(id, "u", start, start.plusMinutes(90), ReservationStatus.CREATED);
+        when(repo.findById(id)).thenReturn(Optional.of(r));
+
+        var dur = service.durationInMinutes(id);
+
+        assertThat(dur).isPresent();
+        assertThat(dur.get()).isEqualTo(90L);
+    }
 }
 
 

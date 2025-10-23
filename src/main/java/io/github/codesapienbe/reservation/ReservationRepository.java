@@ -14,6 +14,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, UUID> 
     @Query("select r from Reservation r where r.end > :now")
     List<Reservation> findActive(ZonedDateTime now);
 
+    @Query("select r from Reservation r where r.start < :to and r.end > :from")
+    List<Reservation> findByRange(ZonedDateTime from, ZonedDateTime to);
+
     Page<Reservation> findAll(Pageable pageable);
 }
 

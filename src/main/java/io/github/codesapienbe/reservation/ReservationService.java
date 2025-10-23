@@ -48,6 +48,14 @@ public class ReservationService {
         });
     }
 
+    public Optional<Long> durationInMinutes(UUID id) {
+        return repository.findById(id).map(r -> java.time.Duration.between(r.getStart(), r.getEnd()).toMinutes());
+    }
+
+    public List<ReservationResponse> searchByRange(ZonedDateTime from, ZonedDateTime to) {
+        return repository.findByRange(from, to).stream().map(this::toResponse).toList();
+    }
+
     private ReservationResponse toResponse(Reservation r) {
         return new ReservationResponse(r.getId(), r.getUserId(), r.getStart(), r.getEnd(), r.getStatus());
     }
