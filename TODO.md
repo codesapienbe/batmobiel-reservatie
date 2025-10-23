@@ -12,4 +12,4 @@ JWT + UserService implementation
 10. Extend reservation: Duration endpoint. Add an endpoint GET /reservations/{id}/duration. Return the reservaiton length in minutes. implement service logic. add unit test. 
 11. Search by Date Range: Add an endpoint GET /reservations/search?from=...&to=... returns reservations that overlap with a given date range. Requires logic JPQL or custom repo method. Test overlapping and non-overlapping periods.
 12. Count Active Reservations per User. Add an endpoint GET /reservations/active/count?userId=... returns a single integer (number of active reservations). Repository method with COUNT. Unit test with edge case (no active reservation.)
-13. Add Open API docs and Swagger UI to allow develoopers to easily test the API via http://localhost:8080/dev+
+13. Add Open API docs and Swagger UI to allow develoopers to easily test the API via http://localhost:8080/docs

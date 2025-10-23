@@ -33,6 +33,9 @@ class AuthReservationIntegrationTest {
         reg.add("spring.datasource.url", postgres::getJdbcUrl);
         reg.add("spring.datasource.username", postgres::getUsername);
         reg.add("spring.datasource.password", postgres::getPassword);
+        // allow Hibernate to create/update schema in test container
+        reg.add("spring.jpa.hibernate.ddl-auto", () -> "update");
+        reg.add("jwt.secret", () -> "dev-secret-key-dev-secret-key-dev");
     }
 
     @Autowired
