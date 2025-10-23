@@ -1,21 +1,33 @@
-# Reservatie API
+# 🚗 Batmobiel Reservatie API
 
-Minimal Spring Boot Reservation API.
+A minimal, production-ready Spring Boot REST API for managing vehicle reservations.
 
-Features
-- Create reservation
-- List reservations (paged)
-- Get active reservations (end > now)
-- Delete reservation by id
+## 📋 Features
 
-Persistence: PostgreSQL (prod), H2 (dev/test)
+- **Create Reservations** - Book vehicles with date/time ranges
+- **List Reservations** - Paginated endpoint for browsing all bookings
+- **Active Reservations** - Filter reservations that are currently active
+- **Delete Reservations** - Remove bookings by ID
+- **Multi-Environment Support** - H2 for development, PostgreSQL for production
+- **Data Validation** - Request validation using Java records and Bean Validation
 
-DTOs implemented as Java records with validation annotations.
+## 🛠 Tech Stack
 
-Run
-- Dev (H2): `mvn spring-boot:run -Dspring-boot.run.profiles=dev`
-- Prod (Postgres): configure `SPRING_DATASOURCE_URL` and run without `dev` profile.
+- **Java 21** (or compatible version)
+- **Spring Boot 3.x**
+- **Spring Data JPA** - Database operations
+- **PostgreSQL** - Production database
+- **H2** - In-memory database for development/testing
+- **Maven** - Build and dependency management
 
-Tests: `mvn test`
+## 🚀 Getting Started
 
+### Prerequisites
 
+- Java 21+ installed
+- Maven 3.6+ installed
+- PostgreSQL 12+ (for production deployment)
+
+### Installation
+
+1. Clone the repository:
