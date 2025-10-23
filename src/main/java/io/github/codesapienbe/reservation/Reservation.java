@@ -15,10 +15,10 @@ public class Reservation {
     @Column(nullable = false)
     private String userId;
 
-    @Column(nullable = false)
+    @Column(name = "start_time", nullable = false)
     private ZonedDateTime start;
 
-    @Column(nullable = false)
+    @Column(name = "end_time", nullable = false)
     private ZonedDateTime end;
 
     @Enumerated(EnumType.STRING)
