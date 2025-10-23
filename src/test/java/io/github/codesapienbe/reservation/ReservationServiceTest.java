@@ -80,7 +80,7 @@ class ReservationServiceTest {
 
     @Test
     void countActiveByUser_returnsCount() {
-        when(repo.countActiveByUser(eq("u"), any(java.time.ZonedDateTime.class))).thenReturn(3L);
+        when(repo.countActiveByUser(org.mockito.ArgumentMatchers.eq("u"), org.mockito.ArgumentMatchers.any(java.time.ZonedDateTime.class))).thenReturn(3L);
         var count = service.countActiveByUser("u");
         assertThat(count).isEqualTo(3L);
     }
