@@ -54,6 +54,11 @@ public class ReservationController {
         return service.searchByRange(f, t);
     }
 
+    @GetMapping("/active/count")
+    public long countActive(@RequestParam String userId) {
+        return service.countActiveByUser(userId);
+    }
+
     @GetMapping("/active")
     public List<ReservationResponse> active() {
         return service.active();

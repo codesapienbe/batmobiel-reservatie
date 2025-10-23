@@ -17,6 +17,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, UUID> 
     @Query("select r from Reservation r where r.start < :to and r.end > :from")
     List<Reservation> findByRange(ZonedDateTime from, ZonedDateTime to);
 
+    @Query("select count(r) from Reservation r where r.userId = :userId and r.end > :now")
+    long countActiveByUser(String userId, ZonedDateTime now);
+
     Page<Reservation> findAll(Pageable pageable);
 }
 

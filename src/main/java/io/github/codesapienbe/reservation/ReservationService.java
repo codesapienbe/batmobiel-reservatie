@@ -56,6 +56,10 @@ public class ReservationService {
         return repository.findByRange(from, to).stream().map(this::toResponse).toList();
     }
 
+    public long countActiveByUser(String userId) {
+        return repository.countActiveByUser(userId, ZonedDateTime.now());
+    }
+
     private ReservationResponse toResponse(Reservation r) {
         return new ReservationResponse(r.getId(), r.getUserId(), r.getStart(), r.getEnd(), r.getStatus());
     }
