@@ -77,6 +77,13 @@ class ReservationServiceTest {
         assertThat(dur).isPresent();
         assertThat(dur.get()).isEqualTo(90L);
     }
+
+    @Test
+    void countActiveByUser_returnsCount() {
+        when(repo.countActiveByUser("u", any(java.time.ZonedDateTime.class))).thenReturn(3L);
+        var count = service.countActiveByUser("u");
+        assertThat(count).isEqualTo(3L);
+    }
 }
 
 
