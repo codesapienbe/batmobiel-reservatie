@@ -1,0 +1,20 @@
+```mmd
+flowchart TD
+  A[Client] -->|POST /reservations| B[Controller]
+  B --> C[Service]
+  C --> D[Repository]
+  D --> E[(Database)]
+
+  A -->|GET /reservations?page..| B
+  B --> C
+  C --> D
+
+  A -->|GET /reservations/active| B
+  B --> C
+
+  A -->|DELETE /reservations/{id}| B
+  B --> C
+  C --> D
+```
+
+
